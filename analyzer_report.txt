@@ -1,0 +1,20 @@
+from collections import Counter
+
+log_levels = []
+
+with open("app.log", "r") as file:
+    for line in file:
+        if "ERROR" in line:
+            log_levels.append("ERROR")
+        elif "WARNING" in line:
+            log_levels.append("WARNING")
+        elif "INFO" in line:
+            log_levels.append("INFO")
+
+summary = Counter(log_levels)
+
+print("Log Analysis Report")
+print("-------------------")
+
+for level, count in summary.items():
+    print(level, ":", count)
